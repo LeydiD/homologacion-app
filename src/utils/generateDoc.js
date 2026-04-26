@@ -14,7 +14,7 @@ export async function generarDocs(listaPersonas, fecha) {
 
         for (let asig of data.asignaturas) {
 
-            if (!asig.asignatura) continue; // evita basura
+            if (!asig.asignatura) continue; 
 
             const zip = new PizZip(content);
 
