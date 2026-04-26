@@ -28,6 +28,10 @@ export default function App() {
       }
 
       await generarDocs(listaPersonas, fechaFinal);
+      alert("✅ Documentos generados y guardados correctamente");
+
+      setFiles([]);
+      setFecha("");
     } catch (error) {
       console.error(error);
       alert("Error procesando");
