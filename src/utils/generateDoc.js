@@ -4,7 +4,7 @@ import JSZip from "jszip";
 import { saveAs } from "file-saver";
 
 export async function generarDocs(listaPersonas, fecha) {
-    const content = await fetch("/template.docx").then(res => res.arrayBuffer());
+    const content = await fetch("https://leydid.github.io/homologacion-app/template.docx").then(res => res.arrayBuffer());
 
     const zipGlobal = new JSZip();
 
@@ -14,7 +14,7 @@ export async function generarDocs(listaPersonas, fecha) {
 
         for (let asig of data.asignaturas) {
 
-            if (!asig.asignatura) continue; // 🔥 evita basura
+            if (!asig.asignatura) continue; // evita basura
 
             const zip = new PizZip(content);
 
@@ -52,7 +52,7 @@ export async function generarDocs(listaPersonas, fecha) {
 
     const zipFinal = await zipGlobal.generateAsync({ type: "blob" });
 
-    // 🔥 AQUÍ EL USUARIO ELIGE DÓNDE GUARDAR
+    // AQUÍ EL USUARIO ELIGE DÓNDE GUARDAR
     if ('showSaveFilePicker' in window) {
         try {
             const handle = await window.showSaveFilePicker({
